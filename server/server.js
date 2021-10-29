@@ -7,7 +7,7 @@ const config = require('../server/config/config').get(process.env.NODE_ENV)
 
 app.use(express.static('client/build'))
 app.use(cors({
-    origin: ['https://onlinealimente.netlify.app', 'http://localhost:3000'],
+    origin: 'https://onlinealimente.netlify.app',
     credentials: true,
 }))
 
