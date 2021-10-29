@@ -7,7 +7,7 @@ const config = require('../server/config/config').get(process.env.NODE_ENV)
 
 app.use(express.static('client/build'))
 app.use(cors({
-    origin: `http://localhost:3000`,  //react's address
+    origin: `https://alimente-res.netlify.app/`,  //react's address
     credentials: true
 }))
 
