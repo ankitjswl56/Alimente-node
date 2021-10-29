@@ -7,8 +7,8 @@ const config = require('../server/config/config').get(process.env.NODE_ENV)
 
 app.use(express.static('client/build'))
 app.use(cors({
-    origin: `https://onlinealimente.netlify.app`,  //react's address
-    credentials: true
+    origin: '*',
+    credentials: true,
 }))
 
 const nodemailer = require('nodemailer')
@@ -367,4 +367,6 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.listen(process.env.PORT || 3001)
+app.listen(3001, () => {
+    console.log('You are connected now')
+})
