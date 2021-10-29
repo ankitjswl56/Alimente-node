@@ -7,7 +7,7 @@ const config = require('../server/config/config').get(process.env.NODE_ENV)
 
 app.use(express.static('client/build'))
 app.use(cors({
-    origin: 'https://onlinealimente.netlify.app',
+    origin: ['https://onlinealimente.netlify.app', 'http://localhost:3000'],
     credentials: true,
 }))
 
@@ -367,6 +367,6 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log('You are connected now')
 })
