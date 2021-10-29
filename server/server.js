@@ -1,11 +1,15 @@
 const express  = require('express')
 const app = express()
-
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 
 const config = require('../server/config/config').get(process.env.NODE_ENV)
 
 app.use(express.static('client/build'))
+app.use(cors({
+    origin: `http://localhost:3000`,  //react's address
+    credentials: true
+}))
 
 const nodemailer = require('nodemailer')
 let transporter = nodemailer.createTransport({
@@ -39,6 +43,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('./models/user');
 const {Contactusinfo} = require('./models/contactusform');
 const { Cart } = require('./models/usercart');
+const { countReset } = require('console');
 
 
 
