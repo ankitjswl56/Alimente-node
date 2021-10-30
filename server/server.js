@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import jwt from 'jsonwebtoken';
 import config from './config/config.js';
 import nodemailer from 'nodemailer';
 import mongoose from 'mongoose';
