@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
 import config from '../../config/config.js';
 import {User} from '../../models/user.js';
 import bcrypt from 'bcrypt';
@@ -12,6 +13,17 @@ app.use(cookieParser());
 
 const server_config = config(process.env.NODE_ENV)
 const router = express.Router()
+
+
+let transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    secure: false, 
+    auth:{
+        user : 'alimente.restaurant@gmail.com',
+        pass : process.env.EMAILPASS
+    }
+})
 
 router.post('/api/changepassword',(req,res)=>{
   const token = req.cookies.resloginauth

@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import config from './config/config.js';
-import nodemailer from 'nodemailer';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -21,19 +20,10 @@ const server_config = config(process.env.NODE_ENV)
 const app = express()
 // app.use(express.static('client/build'))
 app.use(cors({
-    origin: 'https://onlinealimente.netlify.app/',
+    origin: ['https://onlinealimente.netlify.app', 'http://localhost:3000'],
     credentials: true,
+    optionsSuccessStatus: 204
 }))
-
-let transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 587,
-    secure: false, 
-    auth:{
-        user : 'alimente.restaurant@gmail.com',
-        pass : process.env.EMAILPASS
-    }
-})
 
 mongoose.Promise = global.Promise
 mongoose.connect(server_config.DATABASE,{
@@ -63,7 +53,6 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
     })
 }
-window.onunload = function() {debugger}
 app.listen(
     process.env.PORT || 3001, () => {
     console.log('You are connected now')
