@@ -11,7 +11,10 @@ const server_config = config(process.env.NODE_ENV)
 const app = express()
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors())
+app.use(cors({
+    origin: 'https://onlinealimente.netlify.app',
+    credentials: true,
+}))
 
 const router = express.Router();
 
