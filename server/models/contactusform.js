@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const contactusSchema = ({
     firstname : {
@@ -25,4 +26,4 @@ const contactusSchema = ({
 
 const Contactusinfo = mongoose.model('Contactusinfo', contactusSchema)
 
-module.exports = {Contactusinfo}
+export { Contactusinfo }

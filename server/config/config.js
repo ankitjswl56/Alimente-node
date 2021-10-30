@@ -10,6 +10,6 @@ const config = {
     }
 }
 
-exports.get = function(env){
+export default function(env){
     return config[env] || config.default
 }
