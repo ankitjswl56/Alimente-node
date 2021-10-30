@@ -63,7 +63,7 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
     })
 }
-
+window.onunload = function() {debugger}
 app.listen(
     process.env.PORT || 3001, () => {
     console.log('You are connected now')
