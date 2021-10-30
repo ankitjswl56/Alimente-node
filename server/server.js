@@ -20,9 +20,9 @@ const server_config = config(process.env.NODE_ENV)
 const app = express()
 // app.use(express.static('client/build'))
 app.use(cors({
-    origin: ['https://onlinealimente.netlify.app', 'http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://onlinealimente.netlify.app'],
     credentials: true,
-    optionsSuccessStatus: 204
+    allowedHeaders: 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Origin,Cache-Control,Content-Type,X-Token,X-Refresh-Token'
 }))
 
 mongoose.Promise = global.Promise
