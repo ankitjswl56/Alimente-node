@@ -4,12 +4,14 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import config from '../../config/config.js';
+import cors from 'cors';
 
 const server_config = config(process.env.NODE_ENV)
 
 const app = express()
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cors())
 
 const router = express.Router();
 
