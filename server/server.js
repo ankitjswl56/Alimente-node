@@ -22,8 +22,12 @@ const app = express()
 app.use(cors({
     origin: ['http://localhost:3000', 'https://onlinealimente.netlify.app'],
     credentials: true,
-    allowedHeaders: 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Origin,Cache-Control,Content-Type,X-Token,X-Refresh-Token'
 }))
+
+app.use(function(req,res,next){
+    res.setHeader('Access-Control-Allow-Origin', 'https://onlinealimente.netlify.app')
+    next()
+})
 
 mongoose.Promise = global.Promise
 mongoose.connect(server_config.DATABASE,{
