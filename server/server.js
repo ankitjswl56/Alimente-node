@@ -20,7 +20,8 @@ import account from './controllers/Account/account.js';
 const server_config = config(process.env.NODE_ENV)
 const app = express()
 // app.use(express.static('client/build'))
-app.use(cors({
+const allcors = cors()
+app.use(allcors({
     origin: ['https://onlinealimente.netlify.app', 'http://localhost:3000'],
     credentials: true,
 }))
