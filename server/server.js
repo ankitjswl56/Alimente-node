@@ -21,7 +21,7 @@ const server_config = config(process.env.NODE_ENV)
 const app = express()
 // app.use(express.static('client/build'))
 app.use(cors({
-    origin: 'https://onlinealimente.netlify.app',
+    origin: 'https://onlinealimente.netlify.app/',
     credentials: true,
 }))
 
