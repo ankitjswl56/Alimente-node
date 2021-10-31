@@ -53,15 +53,6 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-// proxy for heroku
-import httpProxy from 'http-proxy';
-httpProxy.createProxyServer({
-    target: ['https://alimente-data.herokuapp.com'],
-    toProxy: true,
-    changeOrigin: true,
-    xfwd: true,
-});
-
 
 app.listen(
     process.env.PORT || 3001, () => {
