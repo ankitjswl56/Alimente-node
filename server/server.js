@@ -4,6 +4,7 @@ import config from './config/config.js';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 // routes
 import Menu from './controllers/menu/menu.js';
@@ -47,7 +48,6 @@ app.use(account);
 app.use('/api', LogoutUser)
 
 if(process.env.NODE_ENV === 'production'){
-    const path = require('path')
     app.get('/*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
     })
