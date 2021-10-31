@@ -56,7 +56,7 @@ if(process.env.NODE_ENV === 'production'){
 // proxy for heroku
 import httpProxy from 'http-proxy';
 httpProxy.createProxyServer({
-    target: ['http://localhost:3000', 'https://onlinealimente.netlify.app'],
+    target: ['https://alimente-data.herokuapp.com'],
     toProxy: true,
     changeOrigin: true,
     xfwd: true,
