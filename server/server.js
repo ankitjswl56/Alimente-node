@@ -24,12 +24,6 @@ app.use(cors({
     credentials: true,
 }))
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-});
-
 mongoose.Promise = global.Promise
 mongoose.connect(server_config.DATABASE,{
     useNewUrlParser : true,
@@ -58,6 +52,17 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
     })
 }
+
+// proxy for heroku
+import httpProxy from 'http-proxy';
+httpProxy.createProxyServer({
+    target: ['http://localhost:3000', 'https://onlinealimente.netlify.app'],
+    toProxy: true,
+    changeOrigin: true,
+    xfwd: true,
+});
+
+
 app.listen(
     process.env.PORT || 3001, () => {
     console.log('You are connected now')
